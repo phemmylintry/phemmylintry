@@ -4,11 +4,9 @@
 - 💬 Ask me about **Python, Django**
 - 📫 How to reach me **phemmylintry@gmail.com**
 
-<br>
 <p align="right"> <h3>Profile Views :-</h3> <img src="https://komarev.com/ghpvc/?username=phemmylintry&label=Profile%20views&color=0e75b6&style=flat"
     alt="phemmylintry" /> 
-  </p>
-<br>
+ </p>
 
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=phemmylintry&theme=vue-dark&hide_border=true&date_format=M%20j%5B%2C%20Y%5D)](https://git.io/streak-stats)
 <br>
