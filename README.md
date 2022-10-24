@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Femi</h1>
 <h3 align="center">Software Engineer</h3>
 
-- 💬 Ask me about **Python, Django**
+- 💬 Ask me about **Python, Django, FastAPI, Docker**
 - 📫 How to reach me **phemmylintry@gmail.com**
 
 <p align="right"> <h3>Profile Views :-</h3> <img src="https://komarev.com/ghpvc/?username=phemmylintry&label=Profile%20views&color=0e75b6&style=flat"
