@@ -40,7 +40,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-gray-600 mb-4 text-lg">Hello, I'm</p>
+              <p className="text-gray-600 mb-4 text-lg">Hello, I&apos;m</p>
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
                 Oluwafemi
                 <br />
@@ -102,8 +102,8 @@ export default function Home() {
                 and implement embedding retrieval solutions.
               </p>
               <p className="text-lg text-gray-700">
-                I'm passionate about clean architecture, API design, and creating systems that 
-                make a real impact. When I'm not coding, you'll find me enjoying classical music 
+                I&apos;m passionate about clean architecture, API design, and creating systems that 
+                make a real impact. When I&apos;m not coding, you&apos;ll find me enjoying classical music 
                 or exploring nature trails.
               </p>
             </div>
@@ -231,7 +231,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <p className="text-lg text-gray-700 mb-8">
-                I'm always interested in hearing about new projects and opportunities. 
+                I&apos;m always interested in hearing about new projects and opportunities. 
                 Whether you have a question or just want to say hi, feel free to reach out!
               </p>
               
