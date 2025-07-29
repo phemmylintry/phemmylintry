@@ -111,9 +111,9 @@ export default function Home() {
               <div>
                 <h3 className="font-semibold mb-2">Education</h3>
                 <p className="text-gray-600">M.Sc. Computer Science (2024-2025)</p>
-                <p className="text-gray-600">York St John University, UK</p>
-                <p className="text-gray-600 mt-3">B.Sc. Computer Science (2018)</p>
-                <p className="text-gray-600">Olabisi Onabanjo University, Nigeria</p>
+                <p className="text-gray-600">York St John University, London, United Kingdom</p>
+                <p className="text-gray-600 mt-3">B.Sc. Computer Science (2015-2018)</p>
+                <p className="text-gray-600">Olabisi Onabanjo University, Ogun State, Nigeria</p>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Languages</h3>
