@@ -55,10 +55,11 @@ export default function Home() {
               </p>
               <div className="flex gap-4 flex-wrap">
                 <a 
-                  href="#skills" 
+                  href="/resume.pdf" 
+                  download="Oluwafemi_Adenuga_Resume.pdf"
                   className="px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
                 >
-                  View Skills
+                  Download Resume
                 </a>
                 <a 
                   href="#contact" 
@@ -124,9 +125,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Work Experience Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12">Work Experience</h2>
+          <div className="space-y-8">
+            <div className="border-l-4 border-gray-300 pl-6">
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <h3 className="text-xl font-bold">Software Engineer</h3>
+                  <p className="text-gray-600">EDI GmbH • Karlsruhe, Germany</p>
+                </div>
+                <span className="text-gray-500">Feb 2023 - Present</span>
+              </div>
+              <ul className="list-disc list-inside text-gray-700 space-y-1">
+                <li>Collaborate with ML engineers to develop RAG services for document embedding and semantic search</li>
+                <li>Deploy LLM models and integrate them into backend workflows</li>
+                <li>Lead backend development for MVV bunker simulation project with real-time data processing</li>
+                <li>Design system architecture and maintain comprehensive technical documentation</li>
+              </ul>
+            </div>
+            
+            <div className="border-l-4 border-gray-300 pl-6">
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <h3 className="text-xl font-bold">Software Engineer</h3>
+                  <p className="text-gray-600">Logic • Athens, Greece</p>
+                </div>
+                <span className="text-gray-500">Jul 2022 - Aug 2024</span>
+              </div>
+              <ul className="list-disc list-inside text-gray-700 space-y-1">
+                <li>Designed and delivered backend APIs using Django and FastAPI for multi-tenant SaaS applications</li>
+                <li>Implemented CI/CD pipelines with Docker Swarm and Terraform, reducing deployment cycles by 40%</li>
+                <li>Modeled performant PostgreSQL and MySQL schemas for large-scale data analytics</li>
+                <li>Introduced clean architecture principles improving codebase maintainability</li>
+              </ul>
+            </div>
+
+            <div className="border-l-4 border-gray-300 pl-6">
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <h3 className="text-xl font-bold">Backend Developer</h3>
+                  <p className="text-gray-600">GetKeel • Ontario, Canada</p>
+                </div>
+                <span className="text-gray-500">May 2021 - Jul 2022</span>
+              </div>
+              <ul className="list-disc list-inside text-gray-700 space-y-1">
+                <li>Developed Django-based backend systems for user management and payments</li>
+                <li>Orchestrated asynchronous job pipelines using Celery and Redis</li>
+                <li>Optimized SQL performance and caching strategies improving response times</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Expertise Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12">What I Do</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -226,8 +281,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* GitHub Activity Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12">GitHub Activity</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 p-8 rounded-lg">
+              <h3 className="text-xl font-bold mb-4">Contribution Overview</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Active Repositories</span>
+                  <span className="font-semibold">15+</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Total Contributions (2024)</span>
+                  <span className="font-semibold">500+</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Languages Used</span>
+                  <span className="font-semibold">Python, JavaScript, Go</span>
+                </div>
+              </div>
+              <a 
+                href="https://github.com/phemmylintry" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block mt-6 text-black hover:text-gray-600 font-semibold"
+              >
+                View GitHub Profile →
+              </a>
+            </div>
+            <div className="bg-gray-50 p-8 rounded-lg">
+              <h3 className="text-xl font-bold mb-4">Recent Activity</h3>
+              <div className="space-y-3">
+                <div className="pb-3 border-b border-gray-200">
+                  <p className="font-medium">🔧 Backend API Development</p>
+                  <p className="text-sm text-gray-600">Implementing RESTful endpoints with Django DRF</p>
+                </div>
+                <div className="pb-3 border-b border-gray-200">
+                  <p className="font-medium">🚀 DevOps Automation</p>
+                  <p className="text-sm text-gray-600">CI/CD pipelines with GitHub Actions</p>
+                </div>
+                <div>
+                  <p className="font-medium">📊 Database Optimization</p>
+                  <p className="text-sm text-gray-600">Query performance improvements in PostgreSQL</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-20">
+      <section id="contact" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12">Get In Touch</h2>
           <div className="grid md:grid-cols-2 gap-12">
