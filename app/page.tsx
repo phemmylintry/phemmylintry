@@ -1,102 +1,335 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const mailtoLink = `mailto:phemmylintry@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+    window.location.href = mailtoLink;
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="fixed w-full top-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <nav className="flex justify-between items-center">
+            <a href="#home" className="text-2xl font-bold hover:text-gray-600 transition-colors">OA</a>
+            <div className="hidden md:flex gap-8">
+              <a href="#home" className="hover:text-gray-600 transition-colors">Home</a>
+              <a href="#about" className="hover:text-gray-600 transition-colors">About</a>
+              <a href="#skills" className="hover:text-gray-600 transition-colors">Skills</a>
+              <a href="#contact" className="hover:text-gray-600 transition-colors">Contact</a>
+            </div>
+          </nav>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Hero Section */}
+      <section id="home" className="pt-20 min-h-screen flex items-center">
+        <div className="max-w-7xl mx-auto px-6 w-full">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-gray-600 mb-4 text-lg">Hello, I'm</p>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6">
+                Oluwafemi
+                <br />
+                <span className="text-gray-400">Adenuga</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-700 mb-8">
+                Senior Backend Engineer
+              </p>
+              <p className="text-lg text-gray-600 mb-8 max-w-lg">
+                I architect scalable backend systems with clean architecture principles, 
+                focusing on robust API design, system reliability, and performance optimization.
+              </p>
+              <div className="flex gap-4 flex-wrap">
+                <a 
+                  href="#skills" 
+                  className="px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
+                >
+                  View Skills
+                </a>
+                <a 
+                  href="#contact" 
+                  className="px-6 py-3 border-2 border-black hover:bg-black hover:text-white transition-all"
+                >
+                  Get In Touch
+                </a>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="relative w-full aspect-square max-w-md mx-auto">
+                <Image
+                  src="/profile.jpeg"
+                  alt="Oluwafemi Adenuga"
+                  fill
+                  className="object-cover rounded-lg shadow-2xl"
+                  priority
+                />
+                <div className="absolute -bottom-4 -right-4 w-full h-full bg-gray-200 rounded-lg -z-10"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12">About Me</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="md:col-span-2">
+              <p className="text-lg text-gray-700 mb-6">
+                With over 4 years of experience in backend development, I specialize in building 
+                robust, scalable systems using Python, Django, and FastAPI. My expertise spans 
+                from developing real-time applications to implementing complex AI solutions.
+              </p>
+              <p className="text-lg text-gray-700 mb-6">
+                I specialize in designing and implementing backend systems with a focus on 
+                clean architecture, scalability, and maintainability. I have extensive experience 
+                collaborating with ML engineers to deploy LLM systems, build RAG services, 
+                and implement embedding retrieval solutions.
+              </p>
+              <p className="text-lg text-gray-700">
+                I'm passionate about clean architecture, API design, and creating systems that 
+                make a real impact. When I'm not coding, you'll find me enjoying classical music 
+                or exploring nature trails.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-semibold mb-2">Education</h3>
+                <p className="text-gray-600">M.Sc. Computer Science (2024-2025)</p>
+                <p className="text-gray-600">York St John University, UK</p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">Languages</h3>
+                <p className="text-gray-600">English, Yoruba</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Expertise Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12">What I Do</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-3">System Design & Architecture</h3>
+              <p className="text-gray-600">
+                Designing scalable backend systems with clean architecture principles, 
+                focusing on maintainability, testability, and performance.
+              </p>
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-3">API Development</h3>
+              <p className="text-gray-600">
+                Building robust RESTful APIs and real-time systems using Django, FastAPI, 
+                and WebSockets with proper authentication and security measures.
+              </p>
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-3">Database Optimization</h3>
+              <p className="text-gray-600">
+                Optimizing database performance with PostgreSQL, implementing efficient 
+                caching strategies with Redis, and working with vector databases.
+              </p>
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-3">ML Systems Integration</h3>
+              <p className="text-gray-600">
+                Collaborating with ML engineers to deploy LLM models, build RAG services, 
+                implement semantic search, and develop document embedding and retrieval systems.
+              </p>
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-3">DevOps & CI/CD</h3>
+              <p className="text-gray-600">
+                Implementing containerized deployments with Docker and Kubernetes, 
+                setting up CI/CD pipelines, and managing cloud infrastructure.
+              </p>
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-3">Real-time Systems</h3>
+              <p className="text-gray-600">
+                Building event-driven architectures with Celery and Redis, implementing 
+                WebSocket connections, and handling real-time data processing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12">Technical Skills</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="font-bold mb-4 text-lg">Backend</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>Python</li>
+                <li>Django / DRF</li>
+                <li>FastAPI</li>
+                <li>Flask</li>
+                <li>Celery</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold mb-4 text-lg">Databases</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>PostgreSQL</li>
+                <li>MySQL</li>
+                <li>MongoDB</li>
+                <li>Redis</li>
+                <li>Vector Databases (Milvus)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold mb-4 text-lg">DevOps</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>Docker</li>
+                <li>Docker Swarm</li>
+                <li>Kubernetes</li>
+                <li>GitHub Actions</li>
+                <li>AWS</li>
+                <li>Terraform</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold mb-4 text-lg">Others</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>REST APIs</li>
+                <li>WebSockets</li>
+                <li>CI/CD</li>
+                <li>TDD</li>
+                <li>Agile</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12">Get In Touch</h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <p className="text-lg text-gray-700 mb-8">
+                I'm always interested in hearing about new projects and opportunities. 
+                Whether you have a question or just want to say hi, feel free to reach out!
+              </p>
+              
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold mb-2">Email</h3>
+                  <a href="mailto:phemmylintry@gmail.com" className="text-gray-600 hover:text-black">
+                    phemmylintry@gmail.com
+                  </a>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Social</h3>
+                  <div className="flex gap-4">
+                    <a 
+                      href="https://linkedin.com/in/phemmylintry" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-black"
+                    >
+                      LinkedIn
+                    </a>
+                    <a 
+                      href="https://github.com/phemmylintry" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-black"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className="w-full px-4 py-2 border border-gray-300 focus:border-black focus:outline-none"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full px-4 py-2 border border-gray-300 focus:border-black focus:outline-none"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={5}
+                    required
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    className="w-full px-4 py-2 border border-gray-300 focus:border-black focus:outline-none resize-none"
+                  />
+                </div>
+                
+                <button
+                  type="submit"
+                  className="w-full py-3 bg-black text-white hover:bg-gray-800 transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-gray-600">
+            © {new Date().getFullYear()} Oluwafemi Adenuga. All rights reserved.
+          </p>
+        </div>
       </footer>
     </div>
   );
