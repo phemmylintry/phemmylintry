@@ -145,7 +145,7 @@ export default function Home() {
             <div className="border-l-4 border-gray-300 pl-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-xl font-bold">Software Engineer</h3>
+                  <h3 className="text-xl font-bold">Software Engineer (Freelance)</h3>
                   <p className="text-gray-600">Logic • Athens, Greece</p>
                 </div>
                 <span className="text-gray-500">Jul 2022 - Aug 2024</span>
