@@ -28,6 +28,7 @@ export default function Home() {
             <div className="hidden md:flex gap-8">
               <a href="#home" className="hover:text-gray-600 transition-colors">Home</a>
               <a href="#about" className="hover:text-gray-600 transition-colors">About</a>
+              <a href="#experience" className="hover:text-gray-600 transition-colors">Experience</a>
               <a href="#skills" className="hover:text-gray-600 transition-colors">Skills</a>
               <a href="#contact" className="hover:text-gray-600 transition-colors">Contact</a>
             </div>
@@ -127,7 +128,7 @@ export default function Home() {
       </section>
 
       {/* Work Experience Section */}
-      <section className="py-20">
+      <section id="experience" className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12">Work Experience</h2>
           <div className="space-y-6">
