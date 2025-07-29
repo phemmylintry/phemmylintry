@@ -8,7 +8,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Oluwafemi Adenuga - Senior Software Engineer",
+  title: "Oluwafemi Adenuga - Senior Backend Engineer",
   description: "Senior Backend Engineer specializing in Python, Django, FastAPI, and cloud-native development",
 };
 
