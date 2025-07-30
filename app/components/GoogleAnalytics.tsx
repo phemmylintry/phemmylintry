@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 
 declare global {
   interface Window {
-    gtag: (...args: unknown[]) => void;
-    dataLayer: unknown[];
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
@@ -15,6 +15,8 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    if (!window.gtag) return;
+    
     const url = pathname + searchParams.toString();
     
     // Track page views
