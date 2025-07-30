@@ -47,7 +47,9 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       timezone_offset: new Date().getTimezoneOffset(),
       // Connection information
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       connection_type: 'connection' in navigator ? (navigator as any).connection?.effectiveType : undefined,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       connection_speed: 'connection' in navigator ? (navigator as any).connection?.downlink : undefined,
       // Technical details
       cookies_enabled: navigator.cookieEnabled,
@@ -65,10 +67,12 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_
       if (scrollPercent > maxScroll) {
         maxScroll = scrollPercent;
         if (scrollPercent === 25 || scrollPercent === 50 || scrollPercent === 75 || scrollPercent === 100) {
-          window.gtag('event', 'scroll', {
-            percent_scrolled: scrollPercent,
-            page_location: window.location.href,
-          });
+          if (window.gtag) {
+            window.gtag('event', 'scroll', {
+              percent_scrolled: scrollPercent,
+              page_location: window.location.href,
+            });
+          }
         }
       }
     };
@@ -77,11 +81,13 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_
     // Track time on page
     const startTime = Date.now();
     const trackTimeOnPage = () => {
-      const timeOnPage = Math.round((Date.now() - startTime) / 1000);
-      window.gtag('event', 'time_on_page', {
-        time_seconds: timeOnPage,
-        page_location: window.location.href,
-      });
+      if (window.gtag) {
+        const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+        window.gtag('event', 'time_on_page', {
+          time_seconds: timeOnPage,
+          page_location: window.location.href,
+        });
+      }
     };
     window.addEventListener('beforeunload', trackTimeOnPage);
 

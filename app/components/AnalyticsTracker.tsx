@@ -145,10 +145,15 @@ export default function AnalyticsTracker() {
       if (window.gtag) {
         window.gtag('event', 'visitor_details', {
           // Network information
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           network_type: 'connection' in navigator ? (navigator as any).connection?.type : undefined,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           network_effective_type: 'connection' in navigator ? (navigator as any).connection?.effectiveType : undefined,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           network_downlink: 'connection' in navigator ? (navigator as any).connection?.downlink : undefined,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           network_rtt: 'connection' in navigator ? (navigator as any).connection?.rtt : undefined,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           network_save_data: 'connection' in navigator ? (navigator as any).connection?.saveData : undefined,
           
           // Platform details

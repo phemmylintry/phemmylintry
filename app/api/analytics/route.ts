@@ -87,7 +87,6 @@ export async function POST(request: NextRequest) {
     // Get client IP for rate limiting
     const ip = request.headers.get('x-forwarded-for') || 
                request.headers.get('x-real-ip') || 
-               request.ip || 
                'unknown';
     
     // Get user agent for device info
