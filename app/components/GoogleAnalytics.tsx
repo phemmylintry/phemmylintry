@@ -45,8 +45,8 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       timezone_offset: new Date().getTimezoneOffset(),
       // Connection information
-      connection_type: ((navigator as any).connection as any)?.effectiveType,
-      connection_speed: ((navigator as any).connection as any)?.downlink,
+      connection_type: 'connection' in navigator ? (navigator as any).connection?.effectiveType : undefined,
+      connection_speed: 'connection' in navigator ? (navigator as any).connection?.downlink : undefined,
       // Technical details
       cookies_enabled: navigator.cookieEnabled,
       online_status: navigator.onLine,

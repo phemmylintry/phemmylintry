@@ -122,11 +122,11 @@ export default function AnalyticsTracker() {
     // Collect initial visitor data
     window.gtag('event', 'visitor_details', {
       // Network information
-      network_type: ((navigator as any).connection as any)?.type,
-      network_effective_type: ((navigator as any).connection as any)?.effectiveType,
-      network_downlink: ((navigator as any).connection as any)?.downlink,
-      network_rtt: ((navigator as any).connection as any)?.rtt,
-      network_save_data: ((navigator as any).connection as any)?.saveData,
+      network_type: 'connection' in navigator ? (navigator as any).connection?.type : undefined,
+      network_effective_type: 'connection' in navigator ? (navigator as any).connection?.effectiveType : undefined,
+      network_downlink: 'connection' in navigator ? (navigator as any).connection?.downlink : undefined,
+      network_rtt: 'connection' in navigator ? (navigator as any).connection?.rtt : undefined,
+      network_save_data: 'connection' in navigator ? (navigator as any).connection?.saveData : undefined,
       
       // Platform details
       platform: navigator.platform,

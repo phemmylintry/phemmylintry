@@ -1,42 +1,90 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// In-memory storage (in production, use a database)
+// Type definitions
+interface DeviceInfo {
+  type: string;
+  os: string;
+  browser: string;
+  isMobile: boolean;
+  isTablet: boolean;
+  isDesktop: boolean;
+}
+
+interface ScreenInfo {
+  width?: number;
+  height?: number;
+  availWidth?: number;
+  availHeight?: number;
+}
+
+interface ViewportInfo {
+  width?: number;
+  height?: number;
+}
+
+interface LocationData {
+  country: string;
+  countryCode: string;
+  region: string;
+  city: string;
+  zip: string;
+  lat: number;
+  lon: number;
+  timezone: string;
+  isp: string;
+  org: string;
+  as: string;
+}
+
+interface PageInfo {
+  url?: string;
+  title?: string;
+  path?: string;
+}
+
+interface PerformanceInfo {
+  [key: string]: unknown;
+}
+
+interface ConnectionInfo {
+  [key: string]: unknown;
+}
+
 interface VisitorData {
   id: number;
   timestamp: string;
   ip: string;
-  device: any;
+  device: DeviceInfo;
   userAgent: string;
-  screen: any;
-  viewport: any;
-  colorDepth: any;
-  pixelRatio: any;
-  language: any;
-  languages: any;
-  timezone: any;
-  timezoneOffset: any;
-  location: any;
-  page: any;
-  referrer: any;
-  cookiesEnabled: any;
-  onlineStatus: any;
-  doNotTrack: any;
-  performance: any;
-  sessionId: any;
-  isReturningVisitor: any;
+  screen: ScreenInfo;
+  viewport: ViewportInfo;
+  colorDepth: number | undefined;
+  pixelRatio: number | undefined;
+  language: string | undefined;
+  languages: string[] | undefined;
+  timezone: string | undefined;
+  timezoneOffset: number | undefined;
+  location: LocationData | null;
+  page: PageInfo;
+  referrer: string | undefined;
+  cookiesEnabled: boolean | undefined;
+  onlineStatus: boolean | undefined;
+  doNotTrack: string | undefined;
+  performance: PerformanceInfo;
+  sessionId: string | undefined;
+  isReturningVisitor: boolean | undefined;
   visitCount: number;
   acceptLanguage: string | null;
   acceptEncoding: string | null;
-  connection: any;
+  connection: ConnectionInfo;
 }
 
+// In-memory storage (in production, use a database)
 const visitorData: VisitorData[] = [];
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    
-    // Get IP address
+    // Get client IP for rate limiting
     const ip = request.headers.get('x-forwarded-for') || 
                request.headers.get('x-real-ip') || 
                request.ip || 
@@ -46,7 +94,7 @@ export async function POST(request: NextRequest) {
     const userAgent = request.headers.get('user-agent') || 'unknown';
     
     // Parse user agent for device details
-    const getDeviceInfo = (ua: string) => {
+    const getDeviceInfo = (ua: string): DeviceInfo => {
       const isMobile = /Mobile|Android|iPhone|iPad/i.test(ua);
       const isTablet = /iPad|Android.*Tablet/i.test(ua);
       const isDesktop = !isMobile && !isTablet;
@@ -85,10 +133,11 @@ export async function POST(request: NextRequest) {
       console.error('Geolocation fetch error:', error);
     }
     
+    const body = await request.json();
     const deviceInfo = getDeviceInfo(userAgent);
     
     // Compile all visitor data
-    const visitor = {
+    const visitor: VisitorData = {
       // Basic Info
       id: Date.now() + Math.random(),
       timestamp: new Date().toISOString(),
