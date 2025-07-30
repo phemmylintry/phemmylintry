@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
+    gtag: (...args: unknown[]) => void;
   }
 }
 
@@ -122,11 +122,11 @@ export default function AnalyticsTracker() {
     // Collect initial visitor data
     window.gtag('event', 'visitor_details', {
       // Network information
-      network_type: (navigator as any).connection?.type,
-      network_effective_type: (navigator as any).connection?.effectiveType,
-      network_downlink: (navigator as any).connection?.downlink,
-      network_rtt: (navigator as any).connection?.rtt,
-      network_save_data: (navigator as any).connection?.saveData,
+      network_type: ((navigator as any).connection as any)?.type,
+      network_effective_type: ((navigator as any).connection as any)?.effectiveType,
+      network_downlink: ((navigator as any).connection as any)?.downlink,
+      network_rtt: ((navigator as any).connection as any)?.rtt,
+      network_save_data: ((navigator as any).connection as any)?.saveData,
       
       // Platform details
       platform: navigator.platform,
@@ -166,7 +166,7 @@ export default function AnalyticsTracker() {
     document.addEventListener('touchstart', handleActivity);
     
     // Inactivity after 30 seconds
-    let inactivityTimer = setInterval(() => {
+    const inactivityTimer = setInterval(() => {
       if (Date.now() - lastActiveTime > 30000) {
         handleInactivity();
       }

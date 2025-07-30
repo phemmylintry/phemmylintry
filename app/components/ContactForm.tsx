@@ -71,7 +71,7 @@ export default function ContactForm() {
           message: data.error || 'Failed to send message. Please try again.',
         });
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         type: 'error',
         message: 'An error occurred. Please try again later.',

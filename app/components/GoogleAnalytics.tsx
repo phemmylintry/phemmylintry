@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
+    gtag: (...args: unknown[]) => void;
+    dataLayer: unknown[];
   }
 }
 
@@ -45,8 +45,8 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       timezone_offset: new Date().getTimezoneOffset(),
       // Connection information
-      connection_type: (navigator as any).connection?.effectiveType,
-      connection_speed: (navigator as any).connection?.downlink,
+      connection_type: ((navigator as any).connection as any)?.effectiveType,
+      connection_speed: ((navigator as any).connection as any)?.downlink,
       // Technical details
       cookies_enabled: navigator.cookieEnabled,
       online_status: navigator.onLine,

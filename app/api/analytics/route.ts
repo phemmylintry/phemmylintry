@@ -1,7 +1,36 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // In-memory storage (in production, use a database)
-const visitorData: any[] = [];
+interface VisitorData {
+  id: number;
+  timestamp: string;
+  ip: string;
+  device: any;
+  userAgent: string;
+  screen: any;
+  viewport: any;
+  colorDepth: any;
+  pixelRatio: any;
+  language: any;
+  languages: any;
+  timezone: any;
+  timezoneOffset: any;
+  location: any;
+  page: any;
+  referrer: any;
+  cookiesEnabled: any;
+  onlineStatus: any;
+  doNotTrack: any;
+  performance: any;
+  sessionId: any;
+  isReturningVisitor: any;
+  visitCount: number;
+  acceptLanguage: string | null;
+  acceptEncoding: string | null;
+  connection: any;
+}
+
+const visitorData: VisitorData[] = [];
 
 export async function POST(request: NextRequest) {
   try {
@@ -143,7 +172,7 @@ export async function POST(request: NextRequest) {
 }
 
 // GET endpoint to retrieve analytics data (protected in production)
-export async function GET(request: NextRequest) {
+export async function GET() {
   // In production, add authentication here
   return NextResponse.json({
     totalVisitors: visitorData.length,
