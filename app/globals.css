@@ -32,6 +32,7 @@ html {
   scroll-behavior: smooth;
 }
 
-* {
-  cursor: auto;
+/* Cursor Styles */
+a, button, [role="button"] {
+  cursor: url('/pixel-hand.png'), pointer;
 }
